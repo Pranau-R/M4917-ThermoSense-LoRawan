@@ -1,6 +1,6 @@
 /*
 
-Module: Model4917_cmd.h
+Module: M4917_cmd.h
 
 Function:
     Linkage for Model4917 command processing.
@@ -10,10 +10,11 @@ Copyright:
 
 Author:
     Dhinesh Kumar Pitchai, MCCI Corporation   May 2022
+
 */
 
-#ifndef _Model4917_cmd_h_
-#define _Model4917_cmd_h_
+#ifndef _M4917_cmd_h_
+#define _M4917_cmd_h_
 
 #pragma once
 
@@ -21,4 +22,4 @@ Author:
 
 McciCatena::cCommandStream::CommandFn cmdLog;
 
-#endif /* _Model4917_cmd_h_ */
+#endif /* _M4917_cmd_h_ */

@@ -1,6 +1,6 @@
 /*
 
-Module: Model4917_cMeasurementLoop.h
+Module: M4917_cMeasurementLoop.h
 
 Function:
     cMeasurementLoop definitions.
@@ -13,8 +13,8 @@ Author:
 
 */
 
-#ifndef _Model4917_cMeasurementLoop_h_
-# define _Model4917_cMeasurementLoop_h_
+#ifndef _M4917_cMeasurementLoop_h_
+# define _M4917_cMeasurementLoop_h_
 
 #pragma once
 
@@ -140,7 +140,6 @@ public:
 
     bool checkCompostSensorPresent(void);
     bool checkRhFlexSensorPresent(void);
-    // void getRhFlexAddress(deviceAddress deviceAddress);
     void configSht();
     bool validAddress(const uint8_t* deviceAddr);
 
@@ -298,8 +297,6 @@ private:
     // second SPI class
     SPIClass                        *m_pSPI2;
 
-    // Mcci_Ds28e18::cDs28e18&         m_Dsht;
-
     // debug flags
     DebugFlags                      m_DebugFlags;
 
@@ -378,4 +375,4 @@ static cMeasurementLoop::Flags operator|= (cMeasurementLoop::Flags &lhs, const c
 
 } // namespace McciModel4917
 
-#endif /* _Model4917_cMeasurementLoop_h_ */
+#endif /* _M4917_cMeasurementLoop_h_ */

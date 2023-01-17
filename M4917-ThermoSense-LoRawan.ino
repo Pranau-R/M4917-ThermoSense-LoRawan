@@ -1,6 +1,6 @@
 /*
 
-Module: Model4917-LoRawan.ino
+Module: M4917-ThermoSense-LoRawan.ino
 
 Function:
     Code for the ThermoSense sensor based on Model 4917
@@ -18,12 +18,12 @@ Author:
 #include <Catena.h>
 #include <arduino_lmic.h>
 #include <Catena_Timer.h>
-#include "Model4917-LoRawan.h"
+#include "M4917-ThermoSense-LoRawan.h"
 #include <OneWire.h>
 #include <DallasTemperature.h>
 #include <MCCI_Catena_DS28E18.h>
-#include "Model4917_cMeasurementLoop.h"
-#include "Model4917_cmd.h"
+#include "M4917_cMeasurementLoop.h"
+#include "M4917_cmd.h"
 
 extern McciCatena::Catena gCatena;
 using namespace McciModel4917;
@@ -47,6 +47,7 @@ static const char sVersion[] = "2.0.3";
 |   Variables.
 |
 \****************************************************************************/
+
 Catena gCatena;
 cTimer ledTimer;
 Catena::LoRaWAN gLoRaWAN;
@@ -68,6 +69,7 @@ DallasTemperature sensor_CompostTemp(&oneWire);
 bool fHasCompostTemp;
 
 cMeasurementLoop gMeasurementLoop;
+
 /****************************************************************************\
 |
 |   User commands
@@ -89,7 +91,6 @@ sMyExtraCommands_top(
         sizeof(sMyExtraCommmands),  /* this is the size of the table */
         nullptr                     /* this is no "first word" for all the commands in this table */
         );
-
 
 /****************************************************************************\
 |

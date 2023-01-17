@@ -1,6 +1,6 @@
 /*
 
-Module: Model4917_cMeasurementLoop_fillBuffer.cpp
+Module: M4917_cMeasurementLoop_fillBuffer.cpp
 
 Function:
     Class for transmitting accumulated measurements.
@@ -15,7 +15,7 @@ Author:
 
 #include <Catena_TxBuffer.h>
 
-#include "Model4917_cMeasurementLoop.h"
+#include "M4917_cMeasurementLoop.h"
 
 #include <arduino_lmic.h>
 
@@ -46,7 +46,6 @@ cMeasurementLoop::fillTxBuffer(
     )
     {
     gLed.Set(McciCatena::LedPattern::Measuring);
-
 
     // initialize the message buffer to an empty state
     b.begin();

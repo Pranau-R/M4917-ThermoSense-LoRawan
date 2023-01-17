@@ -1,9 +1,9 @@
 /*
 
-Name:   Model4917-LoRawan.h
+Name:   M4917-ThermoSense-LoRawan.h
 
 Function:
-    Global linkage for Model4917-LoRawan.ino
+    Global linkage for M4917-ThermoSense-LoRawan.ino
 
 Copyright:
     See accompanying LICENSE file for copyright and license information.
@@ -13,8 +13,8 @@ Author:
 
 */
 
-#ifndef _Model4917_LoRawan_h_
-# define _Model4917_LoRawan_h_
+#ifndef _M4917_LoRawan_h_
+#define _M4917_LoRawan_h_
 
 #pragma once
 
@@ -25,7 +25,7 @@ Author:
 #include <OneWire.h>
 #include <DallasTemperature.h>
 #include <SPI.h>
-#include "Model4917_cMeasurementLoop.h"
+#include "M4917_cMeasurementLoop.h"
 
 // the global clock object
 
@@ -35,7 +35,7 @@ extern  McciCatena::Catena::LoRaWAN             gLoRaWAN;
 extern  McciCatena::StatusLed                   gLed;
 
 extern  SPIClass                                gSPI2;
-extern  McciModel4917::cMeasurementLoop        gMeasurementLoop;
+extern  McciModel4917::cMeasurementLoop         gMeasurementLoop;
 
 //   The Temp Probe
 extern  OneWire                                 oneWire;
@@ -48,4 +48,4 @@ extern  cDs28e18                                gDs28e18;
 //   The flash
 extern  McciCatena::Catena_Mx25v8035f           gFlash;
 
-#endif // !defined(_Model4917_LoRawan_h_)
+#endif // !defined(_M4917_LoRawan_h_)

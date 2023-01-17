@@ -1,6 +1,6 @@
 /*
 
-Module: Model4917_cMeasurementLoop.cpp
+Module: M4917_cMeasurementLoop.cpp
 
 Function:
     Class for transmitting accumulated measurements.
@@ -13,10 +13,10 @@ Author:
 
 */
 
-#include "Model4917_cMeasurementLoop.h"
+#include "M4917_cMeasurementLoop.h"
 
 #include <arduino_lmic.h>
-#include <Model4917-LoRawan.h>
+#include <M4917-ThermoSense-LoRawan.h>
 #include <OneWire.h>
 #include <DallasTemperature.h>
 #include <stdint.h>
@@ -89,8 +89,6 @@ bool cMeasurementLoop::checkRhFlexSensorPresent(void)
 
     if (gDs28e18.getAddress(this->rhFlexCable, 0))
         {
-        // gCatena.SafePrintf("RH Flex Address: "); 
-        // this->getRhFlexAddress(this->rhFlexCable);
         this->configSht();
         return true;
         }
@@ -113,24 +111,10 @@ bool cMeasurementLoop::checkCompostSensorPresent(void)
 
     // locate devices on the bus
     this->m_nDevices = sensor_CompostTemp.getDeviceCount();
-    // gCatena.SafePrintf("Devices Found: %u devices\n", this->m_nDevices);
 
     for (uint8_t nIndex = 0; nIndex < this->m_nDevices; nIndex++)
         {
         sensor_CompostTemp.getAddress(probe[nIndex], nIndex);
-
-        // gCatena.SafePrintf("Device[%u]: ", nIndex);
-        // print address
-        /*for (uint8_t i = 0; i < 8; i++)
-            {
-            // zero pad the address if necessary
-            if (probe[nIndex][i] < 16)
-                gCatena.SafePrintf("0");
-
-            // gCatena.SafePrintf("%u", probe[nIndex][i], HEX);
-            Serial.print(probe[nIndex][i], HEX);
-            }*/
-        // gCatena.SafePrintf("\n");
         }
 
     sensor_CompostTemp.setUserData(probe[0], this->m_userdata.kEndSensor);
@@ -157,20 +141,6 @@ void cMeasurementLoop::requestActive(bool fEnable)
 
     this->m_fsm.eval();
     }
-
-/*void cMeasurementLoop::getRhFlexAddress(deviceAddress deviceAddress)
-    {
-    for (uint8_t i = 0; i < 8; i++)
-        {
-        // zero pad the address if necessary
-        if (deviceAddress[i] < 16)
-            gCatena.SafePrintf("0");
-        // gCatena.SafePrintf("%u", deviceAddress[i], HEX);
-        Serial.print(deviceAddress[i], HEX);
-        }
-
-    // gCatena.SafePrintf("\n");
-    }*/
 
 void cMeasurementLoop::configSht()
     {
@@ -374,12 +344,10 @@ void cMeasurementLoop::updateSynchronousMeasurements()
             auto userData = sensor_CompostTemp.getUserData(probe[nIndex]);
 
             if (userData == this->m_userdata.kEndSensor) {
-                //gCatena.SafePrintf("UserData: 0x%4x :: Fetching temperature of End Probe\n", userData);
                 this->m_data.bottomProbe.TempC = compostTempC;
                 this->m_data.flags |= Flags::Temp1;
                 }
             else if (userData == this->m_userdata.kMiddleSensor) {
-                //gCatena.SafePrintf("UserData: 0x%4x :: Fetching temperature of Middle Probe\n", userData);
                 this->m_data.middleProbe.TempC = compostTempC;
                 this->m_data.flags |= Flags::Temp2;
                 }
